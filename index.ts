@@ -1,6 +1,6 @@
 import { clearTimeout } from 'timers';
 
-interface CacheConfiguration<T> {
+export interface CacheConfiguration<T> {
     ttl?: number;
     onDelete?: OnDelete<T>
 }
@@ -8,7 +8,7 @@ interface CacheConfiguration<T> {
 type OnDelete<T> = (value: T) => void;
 function noop() { }
 
-class LocalCache<T> {
+export default class LocalCache<T> {
     private dataMap: Map<string, T>;
     private timeoutMap: Map<string, NodeJS.Timeout>;
     private ttl: number;
