@@ -7,9 +7,16 @@
   "scripts": {
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cache",
+    "map",
+    "local",
+    "tool",
+    "zero-dependency",
+    "tiny"
+  ],
+  "author": "c-zw",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^15.12.4",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
