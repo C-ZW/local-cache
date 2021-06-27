@@ -1,4 +1,3 @@
-
 import LocalCache from "..";
 
 const cache = new LocalCache<number>({ // cache number data
