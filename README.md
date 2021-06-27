@@ -2,6 +2,12 @@
 
 JS map wrapper with ttl and onDelete.
 
+Zero dependency.
+
+> npm install 
+
+---
+
 ```ts
 const cache = new LocalCache<number>({ // cache number data
     ttl: 1000, // default delete after 1 second
