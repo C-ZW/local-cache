@@ -16,10 +16,9 @@ export default class LocalCache<T> {
 
     /**
      * Deletion with ttl is asynchronous. 
-     * default ttl = -1
      * 
-     * @constructor
-     * @param config 
+     * @param config.ttl time in milisecond. Default -1
+     * @param config.onDelete  triggered when deletion. Default empty function
      */
     constructor(config?: CacheConfiguration<T>) {
         this.dataMap = new Map();

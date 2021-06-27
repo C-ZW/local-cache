@@ -1,22 +1,30 @@
+# LocalCache
 
-import LocalCache from "..";
+JS map wrapper with ttl and onDelete.
 
+```ts
 const cache = new LocalCache<number>({ // cache number data
     ttl: 1000, // default delete after 1 second
     onDelete: (value) => { // default onDelete action
         console.log(`Default onDelete: ${value}`);
     }
 });
+```
 
+## set(key: string, value: T, options: CacheConfiguration<T> = {}): void
+
+```ts
 cache.set('1', 111, {  // override default setting
     ttl: 2000, // delete after 2 seconds
-    onDelete: (value) => console.log(`delete: ${value}`)
+    onDelete: (value) => console.log('delete ' + value)
 })
 
 cache.set('2', 222) // use default setting
+```
 
+## get(key: string): T | undefined
 
-
+```ts
 function printFirst() {
     setTimeout(() => {
         console.log(`get 1 data after 1999 milisecond: ${cache.get('1')}`);
@@ -40,6 +48,20 @@ function printSecond() {
 printFirst();
 printSecond();
 
+// get 2 data after 999 milisecond: 222
+// Default onDelete: 222
+// get 2 data after 1001 milisecond: undefined
+// get 1 data after 1999 milisecond: 111
+// delete: 111
+// get 1 data after 2001 milisecond: undefined
+```
+
+## delete(key: string): void
+
+will not trigger onDelete.
+
+
+```ts
 function printDelete() {
     cache.set('3', 333);
     cache.delete('3');
@@ -48,11 +70,27 @@ function printDelete() {
 
 printDelete();
 
+// get 3 data after delete: undefined
+```
+
+## keys(): string[]
+
+```ts
 function printKeys() {
     cache.set('4', 444);
     cache.set('5', 555);
-    console.log(`get keys: ${cache.keys()}`);
-    console.log(`get size: ${cache.size()}`);
+    console.log(`get Keys: ${cache.keys()}`);
 }
 
 printKeys();
+
+// get Keys: 1,2,4,5
+```
+
+## size(): number
+
+return stored data size
+
+## clear(): void
+
+clear data and timeout
