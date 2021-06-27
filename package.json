@@ -1,6 +1,6 @@
 {
   "name": "@c-zw/cache",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/ndex.js",
   "types": "dist/index.d.ts",
@@ -23,5 +23,6 @@
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.29.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": "https://github.com/C-ZW/local-cache"
 }
