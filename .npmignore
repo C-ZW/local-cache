@@ -2,3 +2,6 @@ node_modules/
 coverage/
 examples/
 test/
+
+*.ts
+!*.d.ts

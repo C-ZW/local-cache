@@ -1,7 +1,7 @@
 {
   "name": "@c-zw/cache",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.4",
+  "description": "JS map wrapper with ttl and onDelete.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
