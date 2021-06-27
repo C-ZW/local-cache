@@ -44,6 +44,16 @@ export default class LocalCache<T> {
     }
 
     /**
+     * Get data by key.
+     * 
+     * @param key 
+     * @returns 
+     */
+    public get(key: string): T | undefined {
+        return this.dataMap.get(key);
+    }
+
+    /**
      * Delete key immediately
      * 
      * @param key 
