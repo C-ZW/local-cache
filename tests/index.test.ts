@@ -6,7 +6,7 @@ const ttl = 10;
 describe('test', () => {
     const cache = new LocalCache<number>({
         ttl,
-        onDelete: async (value) => { }
+        onDelete: (value) => { }
     });
 
     it('check set and get with default configuration', (done) => {
@@ -45,7 +45,7 @@ describe('test', () => {
     it('check size', () => {
         const cache = new LocalCache<number>({
             ttl,
-            onDelete: async (value) => { }
+            onDelete: (value) => { }
         });
         expect(cache.size()).to.equal(0);
         cache.set('1', 1);
@@ -55,7 +55,7 @@ describe('test', () => {
     it('check clear', () => {
         const cache = new LocalCache<number>({
             ttl,
-            onDelete: async (value) => { }
+            onDelete: (value) => { }
         });
         cache.set('1', 1);
         cache.clear();
@@ -67,7 +67,7 @@ describe('test', () => {
     it('check delete', () => {
         const cache = new LocalCache<number>({
             ttl,
-            onDelete: async (value) => { }
+            onDelete: (value) => { }
         });
         cache.set('1', 1);
         cache.delete('1');
@@ -79,7 +79,7 @@ describe('test', () => {
     it('check keys', () => {
         const cache = new LocalCache<number>({
             ttl,
-            onDelete: async (value) => { }
+            onDelete: (value) => { }
         });
         cache.set('1', 1);
         cache.set('2', 2);
