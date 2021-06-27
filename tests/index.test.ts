@@ -86,6 +86,14 @@ describe('test', () => {
         expect(cache.keys()).to.have.all.members(['1', '2']);
         cache.set('1', 1);
         expect(cache.keys()).to.have.all.members(['1', '2']);
+    })
 
+    it('check no default', (done) => {
+        const cache = new LocalCache<number>();
+        cache.set('1', 1);
+        setTimeout(() => {
+            expect(cache.get('1')).to.equal(1);
+            done();
+        }, ttl + 1);
     })
 })
