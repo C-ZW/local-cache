@@ -4,7 +4,7 @@ JS map wrapper with ttl and onDelete.
 
 Zero dependency.
 
-> npm install 
+> npm i @c-zw/cache 
 
 ---
 
