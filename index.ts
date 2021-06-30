@@ -1,6 +1,6 @@
 import { clearTimeout } from 'timers';
 
-export interface CacheConfiguration<T> {
+export interface options<T> {
     ttl?: number;
     onDelete?: OnDelete<T>
 }
@@ -20,7 +20,7 @@ export default class LocalCache<T> {
      * @param config.ttl time in milisecond. Default -1
      * @param config.onDelete  triggered when deletion. Default empty function
      */
-    constructor(config?: CacheConfiguration<T>) {
+    constructor(config?: options<T>) {
         this.dataMap = new Map();
         this.timeoutMap = new Map();
         this.ttl = config?.ttl ?? -1;
@@ -28,17 +28,25 @@ export default class LocalCache<T> {
     }
 
     /**
-     * Add key value pair with ttl. Key will not deleted if ttl < 0.
+     * Add key value pair with ttl. Key will not deleted if ttl < 0. Options can be ttl or CacheConfiguration.
+     * 
      * 
      * @param key string
      * @param value T
-     * @param ttl number
+     * @param CacheConfiguration 
      */
-    public set(key: string, value: T, options: CacheConfiguration<T> = {}): void {
+    public set(key: string, value: T, options: options<T> | number = {}): void {
         this.deleteImmediately(key);
         this.dataMap.set(key, value);
+        let ttl, onDelete;
+        if (typeof options === 'number' && options !== undefined) {
+            ttl = options;
+            onDelete = this.onDelete;
+        } else {
+            ttl = options.ttl ?? this.ttl;
+            onDelete = options.onDelete ?? this.onDelete;
+        }
 
-        const { ttl = this.ttl, onDelete = this.onDelete } = options;
         if (ttl >= 0) this.deleteKeyAt(key, ttl, onDelete);
     }
 

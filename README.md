@@ -19,7 +19,7 @@ const cache = new LocalCache<number>({ // cache number data
 });
 ```
 
-## set(key: string, value: T, options: CacheConfiguration<T> = {}): void
+## set(key: string, value: T, options: options<T> | number = {}): void
 
 ```ts
 cache.set('1', 111, {  // override default setting
@@ -28,6 +28,7 @@ cache.set('1', 111, {  // override default setting
 })
 
 cache.set('2', 222) // use default setting
+cache.set('3', 333, 4000) // override default ttl only
 ```
 
 ## get(key: string): T | undefined

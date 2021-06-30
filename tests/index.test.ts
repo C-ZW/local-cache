@@ -26,8 +26,25 @@ describe('test', () => {
 
         setTimeout(() => {
             expect(cache.get('2'), 'get 2 value').to.equal(2);
-            done();
         }, ttl + 1);
+
+        setTimeout(() => {
+            expect(cache.get('2'), 'get 2 value').to.be.undefined;
+            done();
+        }, ttl + 3);
+    })
+
+    it('check override default ttl with number in third param', (done) => {
+        cache.set('3', 3, ttl + 2);
+
+        setTimeout(() => {
+            expect(cache.get('3'), 'get 3 value').to.equal(3);
+        }, ttl + 1);
+
+        setTimeout(() => {
+            expect(cache.get('3'), 'get 3 value').to.be.undefined;
+            done();
+        }, ttl + 3);
     })
 
     it('check override default onDelete', (done) => {
