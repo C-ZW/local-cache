@@ -9,6 +9,8 @@ Zero dependency.
 ---
 
 ```ts
+import LocalCache from '@c-zw/cache';
+
 const cache = new LocalCache<number>({ // cache number data
     ttl: 1000, // default delete after 1 second
     onDelete: (value) => { // default onDelete action
