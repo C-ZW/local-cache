@@ -2,14 +2,15 @@
 
 JS map wrapper with ttl and onDelete.
 
-Zero dependency.
+## Installation
 
-> npm i @c-zw/cache 
-
----
+```bash
+npm i @c-zw/cache 
+```
 
 ```ts
 import LocalCache from '@c-zw/cache';
+// const LocalCache = require('@c-zw/cache').default;
 
 const cache = new LocalCache<number>({ // cache number data
     ttl: 1000, // default delete after 1 second
@@ -19,7 +20,7 @@ const cache = new LocalCache<number>({ // cache number data
 });
 ```
 
-## set(key: string, value: T, options: options<T> | number = {}): void
+## set(key: string, value: T, options: options\<T\> | number = {}): void
 
 ```ts
 cache.set('1', 111, {  // override default setting
@@ -68,7 +69,6 @@ printSecond();
 ## delete(key: string): void
 
 will not trigger onDelete.
-
 
 ```ts
 function printDelete() {
