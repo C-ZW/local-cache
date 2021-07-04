@@ -7,5 +7,7 @@ dist/examples/
 
 tsconfig.json
 
+.eslintrc.js
+
 *.ts
 !*.d.ts
